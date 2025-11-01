@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BURAQ - Jasa Layanan Media Sosial</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              'primary': '#fc0fb9',
+              'primary-dark': '#d9009f',
+            }
+          }
+        }
+      }
+    </script>
+    <style type="text/tailwindcss">
+      @layer base {
+        body {
+          font-family: 'Inter', sans-serif;
+        }
+      }
+    </style>
+     <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;900&display=swap" rel="stylesheet">
+    <style>
+      .animate-blob {
+        animation: blob 7s infinite;
+      }
+      .animation-delay-4000 {
+        animation-delay: -4s;
+      }
+      @keyframes blob {
+        0% { transform: translate(0px, 0px) scale(1); }
+        33% { transform: translate(30px, -50px) scale(1.1); }
+        66% { transform: translate(-20px, 20px) scale(0.9); }
+        100% { transform: translate(0px, 0px) scale(1); }
+      }
+
+      /* Sidebar Styles */
+      .sidebar {
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .backdrop {
+        opacity: 0;
+        pointer-events: none;
+        transition: opacity 0.3s;
+      }
+      .backdrop.open {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    </style>
+<link rel="stylesheet" href="/index.css">
+</head>
+  <body class="bg-gray-50 text-gray-800">
+    <div id="root">
+      <!-- Header / Sidebar -->
+      <header>
+        <!-- Menu Button -->
+        <button id="menu-button" class="fixed top-4 left-4 z-[60] bg-white/80 backdrop-blur-sm p-3 rounded-full text-gray-800 shadow-md hover:scale-110 transition-transform duration-300" aria-label="Buka menu">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          </svg>
+        </button>
+
+        <!-- Backdrop -->
+        <div id="backdrop" class="fixed inset-0 bg-black/40 z-40 backdrop"></div>
+
+        <!-- Sidebar -->
+        <aside id="sidebar" class="fixed top-0 left-0 h-full w-72 bg-white shadow-2xl z-50 sidebar">
+          <div class="flex flex-col h-full p-6">
+            <div class="flex justify-between items-center mb-10">
+              <a href="#hero" class="text-3xl font-black text-primary nav-link">BURAQ</a>
+              <button id="close-button" class="text-gray-500 hover:text-gray-800" aria-label="Tutup menu">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+                </svg>
+              </button>
+            </div>
+            
+            <nav class="flex flex-col space-y-3">
+              <a href="#dashboard" class="block text-lg font-medium text-gray-700 hover:text-primary hover:bg-pink-100/50 rounded-lg px-4 py-3 transition-all duration-200 nav-link">Dashboard</a>
+              <a href="#paket" class="block text-lg font-medium text-gray-700 hover:text-primary hover:bg-pink-100/50 rounded-lg px-4 py-3 transition-all duration-200 nav-link">Paket</a>
+              <a href="#testimoni" class="block text-lg font-medium text-gray-700 hover:text-primary hover:bg-pink-100/50 rounded-lg px-4 py-3 transition-all duration-200 nav-link">Testimoni</a>
+              <a href="#kontak" class="block text-lg font-medium text-gray-700 hover:text-primary hover:bg-pink-100/50 rounded-lg px-4 py-3 transition-all duration-200 nav-link">Kontak</a>
+            </nav>
+
+            <div class="mt-auto">
+              <a href="#kontak" class="block w-full text-center bg-primary text-white font-bold py-3 px-6 rounded-full hover:bg-primary-dark transition-all duration-300 transform hover:scale-105 nav-link">
+                Pesan Sekarang
+              </a>
+            </div>
+          </div>
+        </aside>
+      </header>
+      
+      <main>
+        <!-- Hero Section -->
+        <section id="hero" class="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-pink-100 to-white overflow-hidden">
+          <div class="absolute inset-0 bg-grid-pink-200/50 [mask-image:linear-gradient(to_bottom,white_5%,transparent)]"></div>
+          <div class="absolute top-0 left-0 w-72 h-72 bg-primary/20 rounded-full filter blur-3xl opacity-50 animate-blob"></div>
+          <div class="absolute bottom-0 right-0 w-72 h-72 bg-pink-300/20 rounded-full filter blur-3xl opacity-50 animate-blob animation-delay-4000"></div>
+          
+          <div class="container mx-auto px-6 text-center z-10">
+            <h1 class="text-4xl md:text-6xl lg:text-7xl font-black text-gray-800 mb-4 leading-tight">
+              Tingkatkan Popularitas <span class="text-primary">Media Sosial</span> Anda
+            </h1>
+            <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto mb-8">
+              BURAQ menyediakan layanan followers, likes, dan views untuk membawa akun Anda ke level berikutnya. Cepat, aman, dan terpercaya.
+            </p>
+            <a href="#paket" class="bg-primary text-white font-bold py-4 px-10 rounded-full text-lg hover:bg-primary-dark transition-transform duration-300 ease-in-out transform hover:scale-105 inline-block shadow-lg hover:shadow-xl nav-link">
+              Lihat Paket Kami
+            </a>
+          </div>
+        </section>
+
+        <!-- Dashboard Section -->
+        <section id="dashboard" class="py-20 bg-white">
+          <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+              <h2 class="text-3xl md:text-4xl font-black text-gray-800">Kenapa Memilih BURAQ?</h2>
+              <p class="text-lg text-gray-600 mt-2 max-w-2xl mx-auto">Kami menawarkan lebih dari sekadar angka, kami memberikan kualitas dan keamanan untuk pertumbuhan akun Anda.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+              <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:border-pink-200 transition-all duration-300">
+                <svg class="w-10 h-10 mb-4 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M15.042 21.37a17.361 17.361 0 01-3.042.63 17.361 17.361 0 01-3.042-.63m6.084 0a17.361 17.361 0 003.042-.63m-9.126 0a17.361 17.361 0 00-3.042.63M12 21a17.42 17.42 0 005.458-1.147M12 21a17.42 17.42 0 01-5.458-1.147M12 3.75a17.42 17.42 0 015.458 1.147M12 3.75a17.42 17.42 0 00-5.458 1.147M12 12.75a2.25 2.25 0 100-4.5 2.25 2.25 0 000 4.5z"></path><path stroke-linecap="round" stroke-linejoin="round" d="M12 12.75a2.25 2.25 0 002.625 2.122 2.25 2.25 0 002.122-2.625 2.25 2.25 0 00-2.122-2.625 2.25 2.25 0 00-2.625 2.122zM12 12.75a2.25 2.25 0 01-2.625 2.122 2.25 2.25 0 01-2.122-2.625 2.25 2.25 0 012.122-2.625 2.25 2.25 0 012.625 2.122z"></path></svg>
+                <h3 class="text-lg font-bold text-gray-800 mb-2">Targeting Tepat Sasaran</h3>
+                <p class="text-gray-600">Pilih audiens yang Anda inginkan, mulai dari negara, usia, hingga minat khusus untuk hasil yang maksimal.</p>
+              </div>
+              <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:border-pink-200 transition-all duration-300">
+                <svg class="w-10 h-10 mb-4 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.286z"></path></svg>
+                <h3 class="text-lg font-bold text-gray-800 mb-2">Proses Cepat & Aman</h3>
+                <p class="text-gray-600">Layanan kami diproses dengan cepat setelah pemesanan dan kami menjamin keamanan akun Anda 100%.</p>
+              </div>
+              <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:border-pink-200 transition-all duration-300">
+                <svg class="w-10 h-10 mb-4 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z"></path></svg>
+                <h3 class="text-lg font-bold text-gray-800 mb-2">Laporan Real-Time</h3>
+                <p class="text-gray-600">Pantau pertumbuhan akun Anda melalui laporan yang kami sediakan secara transparan dan mudah dibaca.</p>
+              </div>
+              <div class="bg-white p-6 rounded-xl shadow-md border border-gray-100 hover:border-pink-200 transition-all duration-300">
+                <svg class="w-10 h-10 mb-4 text-primary" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.068.158 2.223.27 3.484.341V21a.75.75 0 001.06.643l3.22-2.146a1.125 1.125 0 01.628 0l3.22 2.146a.75.75 0 001.06-.643v-2.772c1.261-.07 2.416-.183 3.484-.341C20.877 15.754 22 14.35 22 12.75V9.112c0-1.599-1.123-2.994-2.707-3.227-1.068-.158-2.223-.27-3.484-.341V3a.75.75 0 00-1.06-.643l-3.22 2.146a1.125 1.125 0 01-.628 0l-3.22-2.146A.75.75 0 003 3v2.772c-1.261.07-2.416.183-3.484.341C1.123 6.118 0 7.513 0 9.112v3.638z"></path></svg>
+                <h3 class="text-lg font-bold text-gray-800 mb-2">Dukungan Pelanggan 24/7</h3>
+                <p class="text-gray-600">Tim kami siap membantu menjawab pertanyaan dan mengatasi kendala Anda kapan saja, siang dan malam.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Packages Section -->
+        <section id="paket" class="py-20 bg-gray-50">
+          <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+              <h2 class="text-3xl md:text-4xl font-black text-gray-800">Paket Layanan Kami</h2>
+              <p class="text-lg text-gray-600 mt-2 max-w-2xl mx-auto">Pilih paket layanan media sosial yang paling sesuai untuk meroketkan akun Anda.</p>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+              <!-- Instagram -->
+              <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 flex flex-col h-full">
+                <div class="flex flex-col items-center text-center">
+                  <div class="bg-pink-100 text-primary p-4 rounded-full mb-4">
+                    <svg class="w-8 h-8" stroke-width="1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">Instagram Followers</h3>
+                  <p class="text-gray-500 mb-6 min-h-[40px]">Tingkatkan kredibilitas dan jangkauan akun Instagram Anda.</p>
+                </div>
+                <div class="flex-grow mt-auto border-t border-gray-200 pt-4">
+                  <div class="space-y-2">
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">50 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 5K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">100 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 10K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">500 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 20K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">1000 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 35K</span></div>
+                  </div>
+                </div>
+              </div>
+              <!-- TikTok -->
+              <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 flex flex-col h-full">
+                <div class="flex flex-col items-center text-center">
+                  <div class="bg-pink-100 text-primary p-4 rounded-full mb-4">
+                    <svg class="w-8 h-8" stroke-width="1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M16.5 6.5a4.5 4.5 0 1 0 4.5 4.5V6.5h-4.5zM12 2v10a4 4 0 1 0 4 4v-4a4 4 0 0 0-4-4z"></path></svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">TikTok Followers</h3>
+                  <p class="text-gray-500 mb-6 min-h-[40px]">Jadikan konten Anda viral dengan menambah jumlah followers.</p>
+                </div>
+                <div class="flex-grow mt-auto border-t border-gray-200 pt-4">
+                  <div class="space-y-2">
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">50 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 5K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">100 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 10K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">500 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 20K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">1000 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 35K</span></div>
+                  </div>
+                </div>
+              </div>
+              <!-- YouTube -->
+              <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 flex flex-col h-full">
+                <div class="flex flex-col items-center text-center">
+                  <div class="bg-pink-100 text-primary p-4 rounded-full mb-4">
+                    <svg class="w-8 h-8" stroke-width="1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2A29 29 0 0 0 23 11.75a29 29 0 0 0-.46-5.33z"></path><polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon></svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">YouTube Subscribers</h3>
+                  <p class="text-gray-500 mb-6 min-h-[40px]">Bangun audiens setia Anda dengan penambahan subscriber.</p>
+                </div>
+                <div class="flex-grow mt-auto border-t border-gray-200 pt-4">
+                  <div class="space-y-2">
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">50 Subscribers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 5K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">100 Subscribers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 10K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">500 Subscribers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 20K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">1000 Subscribers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 35K</span></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Facebook -->
+              <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 flex flex-col h-full">
+                <div class="flex flex-col items-center text-center">
+                  <div class="bg-pink-100 text-primary p-4 rounded-full mb-4">
+                    <svg class="w-8 h-8" stroke-width="1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">Facebook Followers</h3>
+                  <p class="text-gray-500 mb-6 min-h-[40px]">Perkuat halaman Facebook Anda untuk bisnis atau komunitas.</p>
+                </div>
+                <div class="flex-grow mt-auto border-t border-gray-200 pt-4">
+                  <div class="space-y-2">
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">50 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 5K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">100 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 10K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">500 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 20K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">1000 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 35K</span></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Snack Video -->
+              <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 flex flex-col h-full">
+                <div class="flex flex-col items-center text-center">
+                  <div class="bg-pink-100 text-primary p-4 rounded-full mb-4">
+                    <svg class="w-8 h-8" stroke-width="2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M14 12a4 4 0 1 0 8 0 4 4 0 1 0-8 0zM2 12a4 4 0 1 0 8 0 4 4 0 1 0-8 0zM12 2a4 4 0 1 0 0 8 4 4 0 1 0 0-8zM12 14a4 4 0 1 0 0 8 4 4 0 1 0 0-8z"></path></svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">Snack Video Followers</h3>
+                  <p class="text-gray-500 mb-6 min-h-[40px]">Tumbuh pesat di platform Snack Video yang sedang naik daun.</p>
+                </div>
+                <div class="flex-grow mt-auto border-t border-gray-200 pt-4">
+                  <div class="space-y-2">
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">50 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 5K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">100 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 10K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">500 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 20K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">1000 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 35K</span></div>
+                  </div>
+                </div>
+              </div>
+              <!-- Shopee -->
+              <div class="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl hover:-translate-y-2 transition-all duration-300 border border-gray-100 flex flex-col h-full">
+                <div class="flex flex-col items-center text-center">
+                  <div class="bg-pink-100 text-primary p-4 rounded-full mb-4">
+                    <svg class="w-8 h-8" stroke-width="2" fill="currentColor" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M21.32,6.59,14.62,2.1a9.5,9.5,0,0,0-5.24,0L2.68,6.59a4.75,4.75,0,0,0-2.43,4.12,4.8,4.8,0,0,0,1,3L5.68,21.9A4.76,4.76,0,0,0,10,24H22a2,2,0,0,0,2-2V10.71A4.75,4.75,0,0,0,21.32,6.59ZM12,14.5a2.75,2.75,0,1,1,2.75-2.75A2.75,2.75,0,0,1,12,14.5Z"></path></svg>
+                  </div>
+                  <h3 class="text-xl font-bold text-gray-800 mb-2">Shopee Followers</h3>
+                  <p class="text-gray-500 mb-6 min-h-[40px]">Tingkatkan kepercayaan pembeli dengan followers toko.</p>
+                </div>
+                <div class="flex-grow mt-auto border-t border-gray-200 pt-4">
+                  <div class="space-y-2">
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">50 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 5K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">100 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 10K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">500 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 20K</span></div>
+                    <div class="flex justify-between items-center py-2"><span class="text-gray-600 font-medium">1000 Followers</span><span class="font-bold text-md text-primary bg-pink-100/60 px-3 py-1 rounded-full">Rp 35K</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Testimonials Section -->
+        <section id="testimoni" class="py-20 bg-white">
+          <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+              <h2 class="text-3xl md:text-4xl font-black text-gray-800">Apa Kata Mereka Tentang Kami</h2>
+              <p class="text-lg text-gray-600 mt-2 max-w-2xl mx-auto">Testimoni dari klien yang telah meroket bersama layanan BURAQ.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col h-full">
+                <p class="text-gray-600 italic mb-6 flex-grow">"Followers Instagram saya naik drastis dalam semalam! Prosesnya cepat dan aman banget. Sekarang jadi lebih gampang dapet endorse. Thanks BURAQ!"</p>
+                <div class="flex items-center">
+                  <img src="https://picsum.photos/seed/rina/100/100" alt="Rina Amelia" class="w-14 h-14 rounded-full mr-4">
+                  <div>
+                    <p class="font-bold text-gray-800">Rina Amelia</p>
+                    <p class="text-sm text-gray-500">Selebgram &amp; Beauty Vlogger</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col h-full">
+                <p class="text-gray-600 italic mb-6 flex-grow">"Awalnya ragu, tapi ternyata subscribers YouTube dari BURAQ beneran permanen dan membantu channel saya memenuhi syarat monetisasi. Recommended!"</p>
+                <div class="flex items-center">
+                  <img src="https://picsum.photos/seed/joko/100/100" alt="Joko Susilo" class="w-14 h-14 rounded-full mr-4">
+                  <div>
+                    <p class="font-bold text-gray-800">Joko Susilo</p>
+                    <p class="text-sm text-gray-500">YouTuber Gaming</p>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-8 rounded-2xl shadow-lg border border-gray-100 flex flex-col h-full">
+                <p class="text-gray-600 italic mb-6 flex-grow">"Sebagai pemilik toko online, followers Shopee sangat penting untuk kepercayaan. Layanan BURAQ membuat toko saya terlihat lebih profesional dan penjualan meningkat!"</p>
+                <div class="flex items-center">
+                  <img src="https://picsum.photos/seed/dewi/100/100" alt="Dewi Lestari" class="w-14 h-14 rounded-full mr-4">
+                  <div>
+                    <p class="font-bold text-gray-800">Dewi Lestari</p>
+                    <p class="text-sm text-gray-500">Owner, Fashion Shop</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="kontak" class="py-20 bg-gray-50">
+          <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+              <h2 class="text-3xl md:text-4xl font-black text-gray-800">Siap Jadi Populer?</h2>
+              <p class="text-lg text-gray-600 mt-2 max-w-2xl mx-auto">Isi formulir di bawah ini untuk konsultasi gratis atau langsung pesan layanan kami.</p>
+            </div>
+            <div class="max-w-3xl mx-auto bg-white p-8 md:p-12 rounded-2xl shadow-lg border border-gray-100">
+              <form id="contact-form">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                  <div>
+                    <label for="name" class="block text-gray-700 font-medium mb-2">Nama Lengkap</label>
+                    <input type="text" id="name" name="name" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                  </div>
+                  <div>
+                    <label for="email" class="block text-gray-700 font-medium mb-2">Alamat Email</label>
+                    <input type="email" id="email" name="email" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                  </div>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+                   <div>
+                    <label for="phone" class="block text-gray-700 font-medium mb-2">Nomor Telepon</label>
+                    <input type="tel" id="phone" name="phone" required class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary">
+                  </div>
+                  <div>
+                    <label for="package" class="block text-gray-700 font-medium mb-2">Pilih Paket</label>
+                    <select id="package" name="package" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                      <option>Instagram Followers</option>
+                      <option>TikTok Followers</option>
+                      <option>YouTube Subscribers</option>
+                      <option>Facebook Followers</option>
+                      <option>Snack Video Followers</option>
+                      <option>Shopee Followers</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="mb-6">
+                    <label for="followerAmount" class="block text-gray-700 font-medium mb-2">Jumlah Follower</label>
+                    <select id="followerAmount" name="followerAmount" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary bg-white">
+                      <option>50 follower</option>
+                      <option>100 follower</option>
+                      <option>500 follower</option>
+                      <option>1000 follower</option>
+                    </select>
+                </div>
+                <div class="mb-6">
+                  <label for="message" class="block text-gray-700 font-medium mb-2">Username/Link Akun (Opsional)</label>
+                  <textarea id="message" name="message" rows="3" placeholder="Contoh: @usernameanda atau https://..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"></textarea>
+                </div>
+                <div class="text-center">
+                  <button type="submit" class="bg-primary text-white font-bold py-3 px-10 rounded-full text-lg hover:bg-primary-dark transition-transform duration-300 ease-in-out transform hover:scale-105 shadow-lg hover:shadow-xl">
+                    Kirim Permintaan
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <!-- Footer -->
+      <footer class="bg-gray-800 text-white">
+        <div class="container mx-auto px-6 py-8 text-center">
+          <a href="#hero" class="text-3xl font-black text-primary mb-4 inline-block nav-link">
+            BURAQ
+          </a>
+          <p class="text-gray-400">Tingkatkan Popularitas Media Sosial Anda Bersama Kami.</p>
+          <div class="border-t border-gray-700 mt-6 pt-6">
+            <p class="text-gray-500 text-sm">&copy; 2024 BURAQ. All Rights Reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        // --- Sidebar Logic ---
+        const menuButton = document.getElementById('menu-button');
+        const closeButton = document.getElementById('close-button');
+        const sidebar = document.getElementById('sidebar');
+        const backdrop = document.getElementById('backdrop');
+
+        const toggleMenu = () => {
+          sidebar.classList.toggle('open');
+          backdrop.classList.toggle('open');
+          document.body.style.overflow = sidebar.classList.contains('open') ? 'hidden' : 'unset';
+        };
+
+        menuButton.addEventListener('click', toggleMenu);
+        closeButton.addEventListener('click', toggleMenu);
+        backdrop.addEventListener('click', toggleMenu);
+        
+        // --- Smooth Scrolling & Close Menu on Nav ---
+        const navLinks = document.querySelectorAll('.nav-link');
+        navLinks.forEach(link => {
+          link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetElement = document.querySelector(targetId);
+
+            if (sidebar.classList.contains('open')) {
+               toggleMenu();
+               // Wait for sidebar to close before scrolling
+               setTimeout(() => {
+                 if (targetElement) {
+                   targetElement.scrollIntoView({ behavior: 'smooth' });
+                 }
+               }, 300);
+            } else {
+              if (targetElement) {
+                targetElement.scrollIntoView({ behavior: 'smooth' });
+              }
+            }
+          });
+        });
+
+        // --- Contact Form Logic ---
+        const contactForm = document.getElementById('contact-form');
+        contactForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          const formData = new FormData(contactForm);
+          
+          const name = formData.get('name');
+          const email = formData.get('email');
+          const phone = formData.get('phone');
+          const selectedPackage = formData.get('package');
+          const followerAmount = formData.get('followerAmount');
+          const message = formData.get('message');
+          
+          const phoneNumber = "628563231191"; // Nomor WhatsApp tujuan
+
+          const waMessage = `
+Halo BURAQ,
+
+Saya ingin memesan layanan media sosial.
+Berikut adalah detailnya:
+--------------------
+*Nama Lengkap:* ${name}
+*Email:* ${email}
+*No. Telepon:* ${phone}
+*Paket yang Dipilih:* ${selectedPackage}
+*Jumlah Follower:* ${followerAmount}
+*Username/Link Akun:* ${message || '-'}
+--------------------
+
+Mohon informasinya lebih lanjut. Terima kasih.
+          `.trim();
+
+          const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(waMessage)}`;
+          window.open(whatsappUrl, '_blank');
+        });
+        
+        // --- Update Footer Year ---
+        const footerText = document.querySelector('footer .text-sm');
+        if (footerText) {
+          footerText.textContent = `© ${new Date().getFullYear()} BURAQ. All Rights Reserved.`;
+        }
+      });
+    </script>
+  <script type="module" src="/index.tsx"></script>
+</body>
+</html>
